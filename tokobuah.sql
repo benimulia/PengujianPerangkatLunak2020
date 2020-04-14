@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 11, 2019 at 12:36 AM
--- Server version: 5.7.28-0ubuntu0.18.04.4
--- PHP Version: 7.2.24-0ubuntu0.18.04.1
+-- Host: 127.0.0.1
+-- Generation Time: Apr 14, 2020 at 12:03 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -31,17 +33,16 @@ CREATE TABLE `products` (
   `name` varchar(255) NOT NULL,
   `price` int(11) NOT NULL,
   `image` varchar(255) NOT NULL DEFAULT 'default.jpg',
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `expired` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `name`, `price`, `image`, `description`) VALUES
-('5cb90329d0f13', 'Anggrek', 134000, 'default.jpg', 'Angrek adalah bunga dengan'),
-('5cb90737356f4', 'Melati', 412221, '5cb90737356f4.png', 'melati adalah bla bla bla'),
-('5ddd677b524b5', 'asdadas', 14141242, '5ddd677b524b5.png', 'adasdasdasd');
+INSERT INTO `products` (`product_id`, `name`, `price`, `image`, `description`, `expired`) VALUES
+('5e95898d067ee', 'Ini pake expired', 7777, 'default.jpg', 'oinjice', '2020-04-13');
 
 -- --------------------------------------------------------
 
@@ -68,7 +69,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `full_name`, `phone`, `role`, `last_login`, `photo`, `created_at`, `is_active`) VALUES
-(1, 'dian', '$2y$10$TpipIS3PDfeHTJWggvnFO.eT/dVBMyVKI5OcYV1avGMnt8wTqOt5O', 'dian@petanikode.com', 'Ahmad Muhardian', '08123456789', 'admin', '2019-12-10 16:17:02', 'user_no_image.jpg', '2019-12-10 15:46:40', 1);
+(1, 'dian', '$2y$10$TpipIS3PDfeHTJWggvnFO.eT/dVBMyVKI5OcYV1avGMnt8wTqOt5O', 'dian@petanikode.com', 'Ahmad Muhardian', '08123456789', 'admin', '2020-04-14 09:21:38', 'user_no_image.jpg', '2019-12-10 15:46:40', 1);
 
 --
 -- Indexes for dumped tables
@@ -94,7 +95,9 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -9,6 +9,7 @@ class Product_model extends CI_Model
     public $price;
     public $image = "default.jpg";
     public $description;
+    public $expired;
 
     public function rules()
     {
@@ -23,6 +24,10 @@ class Product_model extends CI_Model
             
             ['field' => 'description',
             'label' => 'Description',
+            'rules' => 'required'],
+
+            ['field' => 'expired',
+            'label' => 'Expired Date',
             'rules' => 'required']
         ];
     }
@@ -45,6 +50,7 @@ class Product_model extends CI_Model
 		$this->price = $post["price"];
 		$this->image = $this->_uploadImage();
         $this->description = $post["description"];
+        $this->expired = $post["expired"];
         $this->db->insert($this->_table, $this);
     }
 
@@ -63,6 +69,7 @@ class Product_model extends CI_Model
 		}
 
         $this->description = $post["description"];
+        $this->expired = $post["expired"];
         $this->db->update($this->_table, $this, array('product_id' => $post['id']));
     }
 
